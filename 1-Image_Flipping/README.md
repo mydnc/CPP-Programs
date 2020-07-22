@@ -36,13 +36,14 @@ The function creates the resulting file based on the source image and parameters
     -image data in the image file are modified based on the flipHorizontal/flipVertical parameters.
 
 The image file format is very simple. The file starts with a fixed size header that is followed by the image data. The header has the following structure:
-
-offset   size         description
-+0       2B           endianity (0x4949 little endian, 0x4d4d big endian)
-+2       2B           image width
-+4       2B           image height
-+6       2B           pixel format
-+8       ??           image data (pixels)
+-----------------------------------------------------------------------------------
+    |    offset  |  size    |     description
+    |    +0      |  2B      |     endianity (0x4949 little endian, 0x4d4d big endian)
+    |    +2      |  2B      |     image width
+    |    +4      |  2B      |     image height
+    |    +6      |  2B      |     pixel format
+    |    +8      |  ??      |     image data (pixels)
+-----------------------------------------------------------------------------------
 
     -Little/big endian identifier is the first field in the header. The field describes the byte order of two byte values stored in the file. The actual values (0x4949 and 0x4d4d) are symmetric, thus the field can be correctly read by any platform. This field will be set to little endian in the mandatory tests (little endian is the platform your program runs on). However, the value may be either little endian or big endian in the optional tests. (Actually, there are few invalid inputs in the mandatory tests where the endianity is set to a random value. Obviously, such inputs must be rejected).
     -Width and height fields denote the dimensions of the image. The values must be non-zero.
