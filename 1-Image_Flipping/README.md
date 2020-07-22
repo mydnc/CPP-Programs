@@ -36,7 +36,7 @@ The function creates the resulting file based on the source image and parameters
     -image data in the image file are modified based on the flipHorizontal/flipVertical parameters.
 
 The image file format is very simple. The file starts with a fixed size header that is followed by the image data. The header has the following structure:
------------------------------------------------------------------------------------
+
     |    offset  |  size    |     description
     |    +0      |  2B      |     endianity (0x4949 little endian, 0x4d4d big endian)
     |    +2      |  2B      |     image width
